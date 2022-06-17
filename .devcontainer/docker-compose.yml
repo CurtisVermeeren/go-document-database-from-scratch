@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  go-app:
+    container_name: go-devcontainer-scaffold
+    build: .
+    volumes:
+      - ../:/app:cached
+    ports:
+      - 8080:8080
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    
