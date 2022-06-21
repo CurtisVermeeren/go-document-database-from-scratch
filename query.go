@@ -27,12 +27,16 @@ EX a.b would retrieve 4 from the following
 {"a": {"b": 4, "d": 100}, "c": 8})
 */
 
+// queryComparions represents a single part of a query
+// A key represents a set of keys in json syntax to reach a value
+// op is the operation used to compare the query value with database values
 type queryComparison struct {
 	key   []string
 	value string
 	op    string
 }
 
+// query is a collection of queryComparisons to be performed
 type query struct {
 	ands []queryComparison
 }

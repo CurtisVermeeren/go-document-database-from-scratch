@@ -22,17 +22,12 @@ The can onlyt be AND-ed together and that is done implicitly.
 
 An example of some valid filters:
 
-a:1
-
-b:fifteen a:<3
-
-a.b:12
-
-title:"Which way?"
-
-" a key 2":tenant
-
-" flubber ":"blubber "
+- a:1
+- b:fifteen a:<3
+- a.b:12
+- title:"Which way?"
+- " a key 2":tenant
+- " flubber ":"blubber "
 
 Nested paths are specified using JSON path syntax
 EX a.b would retrieve 4 from the following
@@ -40,4 +35,7 @@ EX a.b would retrieve 4 from the following
 
 Using the movies.json database `curl -s --get http://localhost:8080/docs --data-urlencode 'q="title":"Batman"'` would return something like:
 
-`{"body":{"count":1,"documents":[{"body":{"cast":["Lewis Wilson","Douglas Croft","J. Carrol Naish","Shirley Patterson"],"genres":["Action"],"title":"Batman","year":1943},"id":"8e6a52b6-950e-461f-ba6f-0902aec93572"}]},"status":"ok"}`
+```{"body":{"count":1,"documents":[{"body":{"cast":["Lewis Wilson","Douglas Croft","J. Carrol Naish","Shirley Patterson"],"genres":["Action"],"title":"Batman","year":1943},"id":"8e6a52b6-950e-461f-ba6f-0902aec93572"}]},"status":"ok"}```
+
+## Indexing
+For every path in a document (That isn't a path within an array) store the path and the value of the document at that path.

@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// jsonResponse writes a map[string]any to the ResponseWriter by encoding the body as JSON
 func jsonResponse(w http.ResponseWriter, body map[string]any, err error) {
 	data := map[string]any{
 		"body":   body,
@@ -20,8 +21,10 @@ func jsonResponse(w http.ResponseWriter, body map[string]any, err error) {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
+	// Set the Content-Type header
 	w.Header().Set("Content-Type", "application/json")
 
+	// Encode the JSON response to the ResponseWriter
 	enc := json.NewEncoder(w)
 	err = enc.Encode(data)
 	if err != nil {
