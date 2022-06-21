@@ -1,7 +1,5 @@
 # Document Database in Go from Scratch
-Files for a VSCode devcontainer using Go. 
-Includes the Go Extension and the tools need for it in the Dockerfile.
-The default terminal is Zsh as configured in the Dockerfile
+Implementing the document database as shown by Phil Eaton.
 
 https://notes.eatonphil.com/documentdb.html
 
@@ -38,4 +36,6 @@ Using the movies.json database `curl -s --get http://localhost:8080/docs --data-
 ```{"body":{"count":1,"documents":[{"body":{"cast":["Lewis Wilson","Douglas Croft","J. Carrol Naish","Shirley Patterson"],"genres":["Action"],"title":"Batman","year":1943},"id":"8e6a52b6-950e-461f-ba6f-0902aec93572"}]},"status":"ok"}```
 
 ## Indexing
+The document database makes use of an indexing database alongside the primary document database.
 For every path in a document (That isn't a path within an array) store the path and the value of the document at that path.
+The `SearchDocuments` function makes use of indexing to help search for matches to a query.
